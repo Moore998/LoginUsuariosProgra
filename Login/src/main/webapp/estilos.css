@@ -1,0 +1,38 @@
+@charset "ISO-8859-1";
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    background: url(imagenes/bg.png) ;
+  }
+
+div{
+
+}
+
+#container{
+width: 75%;
+margin: 0px auto;
+box-shadow: 0px 0px 10px gray;
+background: #ccc;
+padding: 7%;
+}
+
+#footer{
+	text-align: center;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	color: white;
+	background: #222222;
+	border-top: 10px solid #01B1EA;
+	box-shadow: 0px 0px 10px gray;
+}
+
+label{
+	 display: block;
+	 margin-top: 10px;
+	 color: black;
+}
+
+
+
