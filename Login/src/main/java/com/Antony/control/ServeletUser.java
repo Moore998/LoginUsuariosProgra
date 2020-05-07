@@ -5,6 +5,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.Antony.DAO.UsuarioDao;
 import com.Antony.model.Loginusuario;
@@ -40,6 +41,19 @@ public class ServeletUser extends HttpServlet {
 		
 		String usu = request.getParameter("usuario");
 		String contra = request.getParameter("contra");
+        String cerrarSeccion = request.getParameter("btncerrar");
+		
+        if(cerrarSeccion!=null) {
+        	if(cerrarSeccion.equals("Cerrar")) {
+    			
+        		HttpSession cerrarSecciones = (HttpSession)request.getSession();
+        		cerrarSecciones.invalidate();
+        		
+        		response.sendRedirect("index.jsp");
+        }
+	      }else {
+			
+		
 		
 		UsuarioDao usuDao = new UsuarioDao();
 		Loginusuario usuario = new Loginusuario();
@@ -50,12 +64,16 @@ public class ServeletUser extends HttpServlet {
 		  int verificarUsuario = usuDao.ingresoUsuario(usuario).size();
 		  
 		  if(verificarUsuario==1) {
-			  System.out.println("Bienvenido");
+
+			  HttpSession seccion = request.getSession(true);
+			  seccion.setAttribute("usuario", usu);
+			 response.sendRedirect("Principal.jsp");
 		  }else {
 			  System.out.println("Error al ingresar");
 		  }
+	}
 		  
-		  response.sendRedirect("index.jsp");
+		  //response.sendRedirect("index.jsp");
 		
 	}
 
