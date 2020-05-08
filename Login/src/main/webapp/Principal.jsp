@@ -16,9 +16,10 @@ if(usuariovariabledeseccion==null){
 %>
 
 <body>
+
+<h1>Bienvenido Moore!</h1>
 <form action="ServeletUser" method="post">
 <input type="submit" value="Cerrar" name="btncerrar">
 </form>
-<h1>Bienvenido Moore!</h1>
 </body>
 </html>

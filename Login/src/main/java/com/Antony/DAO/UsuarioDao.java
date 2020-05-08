@@ -22,6 +22,11 @@ public class UsuarioDao {
 			
 			em.getTransaction().commit();
 			
+			for(Loginusuario datosids:usuarios) {
+				usu.setIdUsuarios(datosids.getIdUsuarios());
+			
+			}
+			
 		} catch (Exception e) {
 		 System.out.println(e+"Error");
 		}

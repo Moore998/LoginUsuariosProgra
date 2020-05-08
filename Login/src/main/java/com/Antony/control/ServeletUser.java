@@ -1,13 +1,17 @@
 package com.Antony.control;
 
 import java.io.IOException;
+import java.util.Date;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.Antony.DAO.HistorialDao;
 import com.Antony.DAO.UsuarioDao;
+import com.Antony.model.Historial;
 import com.Antony.model.Loginusuario;
 
 /**
@@ -64,7 +68,17 @@ public class ServeletUser extends HttpServlet {
 		  int verificarUsuario = usuDao.ingresoUsuario(usuario).size();
 		  
 		  if(verificarUsuario==1) {
-
+              Historial histo = new Historial();
+              HistorialDao  histodao = new HistorialDao();
+              Date fecha = new Date();
+              
+              histo.setFecha(fecha);
+              usuario.setIdUsuarios(usuario.getIdUsuarios());
+              histo.setLoginusuario(usuario);
+              histodao.agregarDatosHistorial(histo);
+              
+              
+              
 			  HttpSession seccion = request.getSession(true);
 			  seccion.setAttribute("usuario", usu);
 			 response.sendRedirect("Principal.jsp");
